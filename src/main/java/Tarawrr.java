@@ -113,6 +113,17 @@ public class Tarawrr {
                     System.out.println("____________________________________________________________");
                 }
 
+            } else if (input1.startsWith("delete")) {
+                String[] arr = input1.split(" ", 2);
+                int number = Integer.parseInt(arr[1]) - 1; // account zero indexing
+                Task t = logbook.get(number);
+                logbook.remove(number);
+                counter --;
+                System.out.println("____________________________________________________________");
+                System.out.println(String.format("Got it. I've removed this task: \n\t%s", t.toString()));
+                System.out.println(String.format("Now you have %s tasks in the list.", counter));
+                System.out.println("____________________________________________________________");
+
             } else if (input1.equals("list")) {
                 // List all tasks
                 String logbookString = "";
