@@ -16,4 +16,10 @@ public class Event extends Task {
                 this.end.replaceAll("to", "to:") + ")";
     }
 
+    @Override
+    public String toStorageString() {
+        return String.format("E | %d | %s | %s", super.isDone() ? 1 : 0, super.getDescription(),
+                this.start + " to " + this.end);
+    }
+
 }
