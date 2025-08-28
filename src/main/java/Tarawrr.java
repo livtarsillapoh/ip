@@ -1,7 +1,43 @@
+import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.File;
 
 public class Tarawrr {
+
+    private static final String DATA_FILE = "data/dataFile.txt";
+
+    private static void addToData(Task t) {
+        // Ensure parent folder exists
+        File file = new File(DATA_FILE);
+        File parent = file.getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs(); // create ./data if it doesn’t exist
+        }
+
+        // Ensure file exists
+        if (!file.exists()) {
+            try {
+                file.createNewFile();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        // Append the task line using writeToFile
+        try {
+            writeToFile(DATA_FILE, t.toStorageString() + System.lineSeparator());
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+    }
+
 
     // Skip first word and space in a string
     public static String removeFirstWord(String string) {
@@ -12,7 +48,24 @@ public class Tarawrr {
         return "";  // Return empty string if no space is found
     }
 
-    public static void main(String[] args) {
+    //Write into a file
+    private static void writeToFile(String filePath, String textToAdd) throws IOException {
+        FileWriter fw = new FileWriter(filePath, true);
+        fw.write(textToAdd);
+        fw.close();
+    }
+
+
+    private static String logbookToString(ArrayList<Task> logbook) {
+        String logbookString = "";
+        for (int i = 0; i < logbook.size(); i++) {
+            logbookString += Integer.toString(i + 1) + ". " + logbook.get(i).toString() + "\n";
+        }
+        return logbookString;
+    }
+
+
+    public static void main(String[] args) throws IOException {
         String logo = "TARAWRR";
         Scanner scanner1 = new Scanner(System.in);
         ArrayList<Task> logbook = new ArrayList<>();
@@ -34,8 +87,9 @@ public class Tarawrr {
                     counter++;
                     ToDos todo = new ToDos(inter);
                     logbook.add(todo);
+                    Tarawrr.writeToFile(DATA_FILE, todo.toStorageString());
                     System.out.println("____________________________________________________________");
-                    System.out.println(String.format("Got it. I've added this task: \n\t%s", todo.toString()));
+                    System.out.println(String.format("Got it. I've added and logged this task: \n\t%s", todo.toString()));
                     System.out.println(String.format("Now you have %s tasks in the list.", counter));
                     System.out.println("____________________________________________________________");
                 } else {
@@ -60,8 +114,9 @@ public class Tarawrr {
                     counter ++;
                     Deadline deadline = new Deadline(arr[0].trim(), arr[1].trim());
                     logbook.add(deadline);
+                    Tarawrr.writeToFile(DATA_FILE, deadline.toStorageString());
                     System.out.println("____________________________________________________________");
-                    System.out.println(String.format("Got it. I've added this task: \n\t%s", deadline.toString()));
+                    System.out.println(String.format("Got it. I've added and logged this task: \n\t%s", deadline.toString()));
                     System.out.println(String.format("Now you have %s tasks in the list.", counter));
                     System.out.println("____________________________________________________________");
                 }
@@ -79,8 +134,9 @@ public class Tarawrr {
                     counter ++;
                     Event event = new Event(arr[0].trim(), arr[1].trim(), arr[2].trim());
                     logbook.add(event);
+                    Tarawrr.writeToFile(DATA_FILE, event.toStorageString());
                     System.out.println("____________________________________________________________");
-                    System.out.println(String.format("Got it. I've added this task: \n\t%s", event.toString()));
+                    System.out.println(String.format("Got it. I've added and logged this task: \n\t%s", event.toString()));
                     System.out.println(String.format("Now you have %s tasks in the list.", counter));
                     System.out.println("____________________________________________________________");
                 }
@@ -126,11 +182,7 @@ public class Tarawrr {
 
             } else if (input1.equals("list")) {
                 // List all tasks
-                String logbookString = "";
-                for (int i = 0; i < logbook.size(); i++) {
-                    logbookString += Integer.toString(i + 1) + ". " + logbook.get(i).toString() + "\n";
-                }
-
+                String logbookString = Tarawrr.logbookToString(logbook);
                 System.out.println("____________________________________________________________\n"
                         + "Here are the tasks in your list:\n"
                         + logbookString
@@ -155,6 +207,7 @@ public class Tarawrr {
         scanner1.close();
     }
 }
+
 
 
 

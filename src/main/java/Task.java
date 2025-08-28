@@ -1,4 +1,4 @@
-public class Task {
+public abstract class Task {
     private boolean status;
     private String name;
 
@@ -15,6 +15,15 @@ public class Task {
         this.status = false;
     }
 
+    // Getters
+    public boolean isDone() {
+        return status;
+    }
+    public String getDescription() {
+        return name;
+    }
+
+    public abstract String toStorageString();
 
     @Override
     public String toString() {
