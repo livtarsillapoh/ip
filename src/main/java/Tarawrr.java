@@ -1,35 +1,15 @@
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.File;
+
 
 public class Tarawrr {
 
     private static final String DATA_FILE = "data/dataFile.txt";
 
     private static void addToData(Task t) {
-        // Ensure parent folder exists
-        File file = new File(DATA_FILE);
-        File parent = file.getParentFile();
-        if (parent != null && !parent.exists()) {
-            parent.mkdirs(); // create ./data if it doesn’t exist
-        }
-
-        // Ensure file exists
-        if (!file.exists()) {
-            try {
-                file.createNewFile();
-            } catch (IOException e) {
-                throw new RuntimeException(e);
-            }
-        }
-
-        // Append the task line using writeToFile
         try {
             writeToFile(DATA_FILE, t.toStorageString() + System.lineSeparator());
         } catch (IOException e) {
@@ -50,7 +30,15 @@ public class Tarawrr {
 
     //Write into a file
     private static void writeToFile(String filePath, String textToAdd) throws IOException {
-        FileWriter fw = new FileWriter(filePath, true);
+        File f = new File(filePath);
+        File parent = f.getParentFile();
+        if (parent != null && !parent.exists()) {
+            parent.mkdirs();
+        }
+        if (!f.exists()) {
+            f.createNewFile();
+        }
+        FileWriter fw = new FileWriter(f, true); // append mode
         fw.write(textToAdd);
         fw.close();
     }
@@ -112,7 +100,7 @@ public class Tarawrr {
                     System.out.println("____________________________________________________________");
                 } else {
                     counter ++;
-                    Deadline deadline = new Deadline(arr[0].trim(), arr[1].trim());
+                    Deadline deadline = new Deadline(arr[0].trim(), Tarawrr.removeFirstWord(arr[1].trim()).trim());
                     logbook.add(deadline);
                     Tarawrr.writeToFile(DATA_FILE, deadline.toStorageString());
                     System.out.println("____________________________________________________________");
@@ -132,7 +120,8 @@ public class Tarawrr {
                     System.out.println("____________________________________________________________");
                 } else {
                     counter ++;
-                    Event event = new Event(arr[0].trim(), arr[1].trim(), arr[2].trim());
+                    Event event = new Event(arr[0].trim(), Tarawrr.removeFirstWord(arr[1].trim()).trim(),
+                            Tarawrr.removeFirstWord(arr[2].trim()).trim());
                     logbook.add(event);
                     Tarawrr.writeToFile(DATA_FILE, event.toStorageString());
                     System.out.println("____________________________________________________________");
@@ -207,6 +196,7 @@ public class Tarawrr {
         scanner1.close();
     }
 }
+
 
 
 
