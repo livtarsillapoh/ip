@@ -11,13 +11,12 @@ public class Tarawrr {
 
     private static void addToData(Task t) {
         try {
-            writeToFile(DATA_FILE, t.toStorageString() + System.lineSeparator());
+            writeToFile(DATA_FILE, t.toStorageString() + "\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
 
     }
-
 
     // Skip first word and space in a string
     public static String removeFirstWord(String string) {
@@ -77,7 +76,7 @@ public class Tarawrr {
                     logbook.add(todo);
                     Tarawrr.writeToFile(DATA_FILE, todo.toStorageString());
                     System.out.println("____________________________________________________________");
-                    System.out.println(String.format("Got it. I've added and logged this task: \n\t%s", todo.toString()));
+                    System.out.println(String.format("Got it. I've added and logged this task:\n\t%s", todo.toString()));
                     System.out.println(String.format("Now you have %s tasks in the list.", counter));
                     System.out.println("____________________________________________________________");
                 } else {
@@ -104,7 +103,7 @@ public class Tarawrr {
                     logbook.add(deadline);
                     Tarawrr.writeToFile(DATA_FILE, deadline.toStorageString());
                     System.out.println("____________________________________________________________");
-                    System.out.println(String.format("Got it. I've added and logged this task: \n\t%s", deadline.toString()));
+                    System.out.println(String.format("Got it. I've added and logged this task:\n\t%s", deadline.toString()));
                     System.out.println(String.format("Now you have %s tasks in the list.", counter));
                     System.out.println("____________________________________________________________");
                 }
@@ -125,7 +124,7 @@ public class Tarawrr {
                     logbook.add(event);
                     Tarawrr.writeToFile(DATA_FILE, event.toStorageString());
                     System.out.println("____________________________________________________________");
-                    System.out.println(String.format("Got it. I've added and logged this task: \n\t%s", event.toString()));
+                    System.out.println(String.format("Got it. I've added and logged this task:\n\t%s", event.toString()));
                     System.out.println(String.format("Now you have %s tasks in the list.", counter));
                     System.out.println("____________________________________________________________");
                 }
