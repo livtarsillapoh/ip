@@ -23,6 +23,25 @@ public class TaskList {
     }
 
     /**
+     * Returns the number of Tasks in TaskList
+     */
+    public int numberOfTasks() {
+        return this.counter;
+    }
+
+    public ArrayList<Task> getTasks() {
+        return this.taskList;
+    }
+
+    public void markTask(int i) {
+       this.taskList.get(i - 1).complete();
+    }
+
+    public void unmarkTask(int i) {
+        this.taskList.get(i - 1).uncomplete();
+    }
+
+    /**
      * Adds a Task to TaskList
      */
     public void addToTaskList(Task task) {
@@ -37,13 +56,6 @@ public class TaskList {
         int taskIndex = taskNumber - 1;
         this.taskList.remove(taskIndex);
         counter--;
-    }
-
-    /**
-     * Returns the number of Tasks in TaskList
-     */
-    public int numberOfTasks() {
-        return this.counter;
     }
 
     @Override

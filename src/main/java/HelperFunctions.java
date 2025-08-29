@@ -1,5 +1,3 @@
-package java.util;
-
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +6,8 @@ import java.io.IOException;
  * Class of helper functions used across other classes
  */
 public class HelperFunctions {
+
+    public static final String HORIZONTAL_LINE = "____________________________________________________________";
 
     /**
      * Removes the first word and first space or an empty string if no space is found
@@ -40,6 +40,14 @@ public class HelperFunctions {
         FileWriter fw = new FileWriter(f, true); // append mode
         fw.write(textToAdd);
         fw.close();
+    }
+
+    private static void addToData(String filePath, Task t) {
+        try {
+            writeToFile(filePath, t.toStorageString() + "\n");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
