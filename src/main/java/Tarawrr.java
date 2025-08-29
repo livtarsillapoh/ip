@@ -4,7 +4,7 @@ import java.util.Scanner;
 import java.io.FileWriter;
 import java.io.IOException;
 
-
+/*
 public class Tarawrr {
 
     private static final String DATA_FILE = "data/dataFile.txt";
@@ -15,42 +15,7 @@ public class Tarawrr {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
-
-    // Skip first word and space in a string
-    public static String removeFirstWord(String string) {
-        int i = string.indexOf(" ");
-        if (i != -1) {
-            return string.substring(i + 1).trim();  // Trim to handle any extra spaces
-        }
-        return "";  // Return empty string if no space is found
-    }
-
-    //Write into a file
-    private static void writeToFile(String filePath, String textToAdd) throws IOException {
-        File f = new File(filePath);
-        File parent = f.getParentFile();
-        if (parent != null && !parent.exists()) {
-            parent.mkdirs();
-        }
-        if (!f.exists()) {
-            f.createNewFile();
-        }
-        FileWriter fw = new FileWriter(f, true); // append mode
-        fw.write(textToAdd);
-        fw.close();
-    }
-
-
-    private static String logbookToString(ArrayList<Task> logbook) {
-        String logbookString = "";
-        for (int i = 0; i < logbook.size(); i++) {
-            logbookString += Integer.toString(i + 1) + ". " + logbook.get(i).toString() + "\n";
-        }
-        return logbookString;
-    }
-
 
     public static void main(String[] args) throws IOException {
         String logo = "TARAWRR";
@@ -62,7 +27,6 @@ public class Tarawrr {
         System.out.println(String.format("Hello! I'm %s", logo));
         System.out.println("What can I do for you?");
         System.out.println("____________________________________________________________");
-
 
         String input1 = scanner1.nextLine();
         while (!input1.equals("bye")) {
@@ -195,7 +159,34 @@ public class Tarawrr {
         scanner1.close();
     }
 }
+*/
 
+//Final class should look like this
+public class Tarawrr {
+
+    private Storage storage;
+    private TaskList tasks;
+    private Ui ui;
+
+    public Tarawrr(String filePath) {
+        ui = new Ui();
+        storage = new Storage(filePath);
+        try {
+            tasks = new TaskList(storage.load());
+        } catch (TarawrrException e) {
+            ui.showLoadingError();
+            tasks = new TaskList();
+        }
+    }
+
+    public void run() {
+        //...
+    }
+
+    public static void main(String[] args) {
+        new Tarawrr("data/dataFile.txt").run();
+    }
+}
 
 
 
