@@ -1,3 +1,4 @@
+package tarawrr;
 public class EventCommand extends Command {
     private String description;
     private String start;

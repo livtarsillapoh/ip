@@ -1,3 +1,4 @@
+package tarawrr;
 public class Ui {
     public static final String HORIZONTAL_LINE = "____________________________________________________________";
 

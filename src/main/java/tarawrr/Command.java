@@ -1,3 +1,4 @@
+package tarawrr;
 public abstract class Command {
     /**
      * Executes the command. May mutate tasks and should print via Ui.

@@ -1,3 +1,4 @@
+package tarawrr;
 import java.io.IOException;
 import java.util.Scanner;
 

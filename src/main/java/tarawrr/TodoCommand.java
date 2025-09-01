@@ -1,21 +1,21 @@
-public class DeadlineCommand extends Command{
+package tarawrr;
+public class TodoCommand extends Command {
     private String description;
-    private String date;
 
-    public DeadlineCommand(String description, String date) {
+    public TodoCommand(String description) {
         this.description = description;
-        this.date = date;
     }
 
     @Override
     public void execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
-        Deadline deadline = new Deadline(description, date);
-        tasks.addToTaskList(deadline);
+        ToDos todo = new ToDos(this.description);
+        tasks.addToTaskList(todo);
         try {
             storage.save(tasks);
         } catch (TarawrrException e) {
             throw new RuntimeException(e);
         }
-        ui.showTaskAddedMessage(deadline, tasks.numberOfTasks());
+        ui.showTaskAddedMessage(todo, tasks.numberOfTasks());
     }
+
 }
