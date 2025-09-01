@@ -2,8 +2,13 @@ package tarawrr;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Deadline Class - Represents a Task with a description and deadline
+ */
 public class Deadline extends Task {
     private LocalDate deadline;
+
+    //Constructor initiates an instance of Deadline with name and date
     public Deadline(String name, String date) {
         super(name);
         this.deadline = LocalDate.parse(date);

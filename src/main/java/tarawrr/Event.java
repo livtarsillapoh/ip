@@ -2,10 +2,14 @@ package tarawrr;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ * Event Class - Represents a Task with a description and start time and end time
+ */
 public class Event extends Task {
     private LocalDate start;
     private LocalDate end;
 
+    //Constructor initiates an instance of Event with name, start time, and end time
     public Event(String name, String start, String end) {
         super(name);
         this.start = LocalDate.parse(start);

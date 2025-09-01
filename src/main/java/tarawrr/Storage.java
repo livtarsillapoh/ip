@@ -9,15 +9,24 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
+/**
+ *  * Storage Class saves and loads data to/from storage hard drive
+ */
 public class Storage {
     private final Path path;
     private final DateTimeFormatter FORMATTER = DateTimeFormatter.ofPattern("yyyy-MM-dd");
     private final DateTimeFormatter INPUT_FORMATTER = DateTimeFormatter.ofPattern("MMM dd yyyy"); // Added formatter for input format
 
+    //Constructor initialises an instance of Storage with a filePath
     public Storage(String filePath) {
         this.path = Paths.get(filePath);
     }
 
+    /**
+     * Load data from the hard drive into TaskList
+     * @return
+     * @throws IOException
+     */
     public TaskList load() throws IOException {
         TaskList tasks = new TaskList();
 
@@ -76,6 +85,11 @@ public class Storage {
         return tasks;
     }
 
+    /**
+     * Saves data from TaskList to the hard drive
+     * @param tasks
+     * @throws TarawrrException
+     */
     public void save(TaskList tasks) throws TarawrrException {
         try {
             FileWriter writer = new FileWriter(path.toFile());

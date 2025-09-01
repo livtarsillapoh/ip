@@ -1,7 +1,12 @@
 package tarawrr;
+
+/**
+ * TodoCommand Class - Represents a command for adding a todos task
+ */
 public class TodoCommand extends Command {
     private String description;
 
+    //Constructor initialises an instance of TodoCommand given description
     public TodoCommand(String description) {
         this.description = description;
     }

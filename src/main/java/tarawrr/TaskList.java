@@ -23,9 +23,6 @@ public class TaskList {
         this.counter = list.size();
     }
 
-    /**
-     * Returns the number of Tasks in TaskList
-     */
     public int numberOfTasks() {
         return this.counter;
     }
@@ -34,10 +31,16 @@ public class TaskList {
         return this.taskList;
     }
 
+    /**
+     * Marks a Task from TaskList given its position
+     */
     public void markTask(int i) {
        this.taskList.get(i - 1).complete();
     }
 
+    /**
+     * Unmarks a Task from TaskList given its position
+     */
     public void unmarkTask(int i) {
         this.taskList.get(i - 1).uncomplete();
     }

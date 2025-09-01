@@ -1,4 +1,8 @@
 package tarawrr;
+
+/**
+ * UnmarkCommand Class - Represents a command for marking a task as incomplete.
+ */
 public class UnmarkCommand extends Command {
     private int index;
 

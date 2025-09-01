@@ -15,6 +15,15 @@ dependencies {
 
 }
 
+jar {
+    archiveBaseName = 'tarawrr'
+    manifest {
+        attributes (
+                'Main-Class': 'tarawrr.Tarawrr'
+        )
+    }
+}
+
 test {
     useJUnitPlatform()
 

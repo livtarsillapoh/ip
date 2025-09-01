@@ -1,4 +1,8 @@
 package tarawrr;
+
+/**
+ * ToDos Class - Represents a Task with a description
+ */
 public class ToDos extends Task {
     // no new fields
     public ToDos(String name) {

@@ -43,6 +43,11 @@ public class HelperFunctions {
         fw.close();
     }
 
+    /**
+     * Writes a task into a file
+     * @param filePath
+     * @param t
+     */
     private static void addToData(String filePath, Task t) {
         try {
             writeToFile(filePath, t.toStorageString() + "\n");

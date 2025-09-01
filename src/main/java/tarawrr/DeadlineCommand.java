@@ -1,8 +1,13 @@
 package tarawrr;
+
+/**
+ * DeadlineCommand Class - Represents a command for adding a deadline task.
+ */
 public class DeadlineCommand extends Command{
     private String description;
     private String date;
 
+    //Constructor initiates an instance of DeadlineCommand with description and date
     public DeadlineCommand(String description, String date) {
         this.description = description;
         this.date = date;

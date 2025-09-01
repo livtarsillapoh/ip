@@ -2,6 +2,9 @@ package tarawrr;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
+/**
+ ** Parser Class - Responsible for parsing user input commands.
+ */
 public class Parser {
     String type;
     String description;
@@ -9,30 +12,12 @@ public class Parser {
     String deadline;
     String startTime, endTime;
 
-
-    public Parser(String input) {
-        if (input != null || !input.isEmpty()) {
-            String[] list = input.split(" ", 4);
-            this.type = list[0].trim();
-            switch(this.type) {
-            case "todo":
-                this.description = list[1].trim();
-            case "deadline":
-                this.description = list[1].trim();
-                String deadlineString = list[3].trim();
-                this.deadline = LocalDate.parse(deadlineString).format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
-            case "event":
-                this.description = list[1].trim();
-                String startString = list[3].trim();
-                this.startTime = LocalDate.parse(startString).format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
-                String endString = list[5].trim();
-                this.endTime = LocalDate.parse(endString).format(DateTimeFormatter.ofPattern("MMM dd yyyy"));
-
-            }
-        }
-    }
-
-
+    /**
+     * Parse user input into its respective command and throws an exception if invalid input is given
+     * @param input
+     * @return
+     * @throws TarawrrException
+     */
     public static Command parseTask(String input) throws TarawrrException {
         String taskType = input.split(" ")[0].toLowerCase().trim();
 

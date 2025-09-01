@@ -1,8 +1,12 @@
 package tarawrr;
 
+/**
+ * MarkCommand Class - Represents a command for marking a task as complete.
+ */
 public class MarkCommand extends Command {
     private int index;
 
+    //Constructor initiates an instance of MarkCommand with index to be marked
     public MarkCommand(int i) {
         this.index = i;
     }

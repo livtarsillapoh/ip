@@ -2,6 +2,9 @@ package tarawrr;
 import java.io.IOException;
 import java.util.Scanner;
 
+/**
+ * Main class
+ */
 public class Tarawrr {
 
     private Storage storage;

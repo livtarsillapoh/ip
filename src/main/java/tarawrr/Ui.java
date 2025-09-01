@@ -1,4 +1,8 @@
 package tarawrr;
+
+/**
+ * Ui class deals with interactions with the user
+ */
 public class Ui {
     public static final String HORIZONTAL_LINE = "____________________________________________________________";
 

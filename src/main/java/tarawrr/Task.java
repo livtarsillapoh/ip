@@ -1,4 +1,8 @@
 package tarawrr;
+
+/**
+ * Task Class - Represents a task with a description and completion status
+ */
 public abstract class Task {
     private boolean status;
     private String name;
@@ -24,6 +28,7 @@ public abstract class Task {
         return name;
     }
 
+    // Get the String representation of a task to be stored in storage
     public abstract String toStorageString();
 
     @Override
