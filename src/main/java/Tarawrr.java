@@ -22,8 +22,13 @@ public class Tarawrr {
             if (input.equals("bye")) {
                 break;
             }
-            Command command = Parser.parseTask(input);
-            command.execute(tasks, ui, storage);
+
+            try {
+                Command command = Parser.parseTask(input);
+                command.execute(tasks, ui, storage);
+            } catch (TarawrrException e) {
+                ui.showError(e.toString());
+            }
         }
 
         ui.showExitMessage(); // Show farewell message when "bye" is typed

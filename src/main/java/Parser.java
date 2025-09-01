@@ -34,21 +34,33 @@ public class Parser {
 
     public static Command parseTask(String input) throws TarawrrException {
         String taskType = input.split(" ")[0].toLowerCase().trim();
-        String description = input.substring(taskType.length()).trim();
 
         switch (taskType) {
         case "todo":
+            String description = input.substring(taskType.length()).trim();
+            if (description == "") {
+                throw new TarawrrException("Todo task must have a description :-(");
+            }
             return new TodoCommand(description);
 
         case "deadline":
-            String[] deadlineParts = description.split(" /by ");
+            String[] deadlineParts = input.substring(taskType.length()).trim().split(" /by ");
+            if (deadlineParts.length < 2) {
+                throw new TarawrrException("Deadline task must have a description and deadline :-(");
+            }
             return new DeadlineCommand(deadlineParts[0].trim(), deadlineParts[1].trim());
 
         case "event":
-            String[] eventParts = description.split(" /from | /to ");
+            String[] eventParts = input.substring(taskType.length()).trim().split(" /from | /to ");
+            if (eventParts.length < 3) {
+                throw new TarawrrException("Event task must have a description, start and end date :-(");
+            }
             return new EventCommand(eventParts[0].trim(), eventParts[1].trim(), eventParts[2].trim());
 
         case "delete":
+            if (input.split(" ").length < 2) {
+                throw new TarawrrException("I'm not sure which task number to delete :-(");
+            }
             int deleteNumber = Integer.parseInt(input.split(" ")[1]);
             return new DeleteCommand(deleteNumber);
 
@@ -56,10 +68,16 @@ public class Parser {
             return new ListCommand();
 
         case "mark":
+            if (input.split(" ").length < 2) {
+                throw new TarawrrException("I'm not sure which task number to mark :-(");
+            }
             int markNumber = Integer.parseInt(input.split(" ")[1]);
             return new MarkCommand(markNumber);
 
         case "unmark":
+            if (input.split(" ").length < 2) {
+                throw new TarawrrException("I'm not sure which task number to unmark :-(");
+            }
             int unmarkNumber = Integer.parseInt(input.split(" ")[1]);
             return new UnmarkCommand(unmarkNumber);
 
