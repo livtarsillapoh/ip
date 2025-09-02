@@ -45,6 +45,12 @@ public class Ui {
         System.out.println(HORIZONTAL_LINE);
     }
 
+    public void showFindTask(TaskList tasks) {
+        System.out.println(HORIZONTAL_LINE);
+        System.out.println(String.format("Here are the matching tasks in your list:\n%s", tasks.toString()));
+        System.out.println(HORIZONTAL_LINE);
+    }
+
     public void showError(String errorMessage) {
         System.out.println(HORIZONTAL_LINE);
         System.out.println(errorMessage);

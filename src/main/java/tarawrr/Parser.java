@@ -17,6 +17,10 @@ public class Parser {
         String taskType = input.split(" ")[0].toLowerCase().trim();
 
         switch (taskType) {
+        case "find":
+            String keyword = input.substring(taskType.length()).trim();
+            return new FindCommand(keyword);
+
         case "todo":
             String description = input.substring(taskType.length()).trim();
             if (description == "") {
