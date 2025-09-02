@@ -21,30 +21,28 @@ public class Ui {
     }
 
     public void showMarkedTask(Task task) {
-        System.out.println("____________________________________________________________");
+        System.out.println(HORIZONTAL_LINE);
         System.out.println(String.format("Nice! I have marked this task as done:\n %s", task.toString()));
-        System.out.println("____________________________________________________________");
+        System.out.println(HORIZONTAL_LINE);
     }
 
     public void showUnmarkedTask(Task task) {
-        System.out.println("____________________________________________________________");
+        System.out.println(HORIZONTAL_LINE);
         System.out.println(String.format("OK! I have marked this task as not done yet:\n %s", task.toString()));
-        System.out.println("____________________________________________________________");
+        System.out.println(HORIZONTAL_LINE);
     }
 
     public void showDeletedTask(Task task, int taskCount) {
-        System.out.println("____________________________________________________________");
-        System.out.println(String.format("Got it. I've removed this task: \n\t%s", task.toString()));
+        System.out.println(HORIZONTAL_LINE);
+        System.out.println(String.format("Got it. I've removed this task:\n\t%s", task.toString()));
         System.out.println(String.format("Now you have %s tasks in the list.", taskCount));
-        System.out.println("____________________________________________________________");
+        System.out.println(HORIZONTAL_LINE);
     }
 
     public void showTaskList(TaskList tasks) {
-        // List all tasks
-        System.out.println("____________________________________________________________\n"
-                + "Here are the tasks in your list:\n"
-                + tasks.toString()
-                + "____________________________________________________________");
+        System.out.println(HORIZONTAL_LINE);
+        System.out.println(String.format("Here are the tasks in your list:\n\t%s", tasks.toString()));
+        System.out.println(HORIZONTAL_LINE);
     }
 
     public void showError(String errorMessage) {

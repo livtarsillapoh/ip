@@ -12,7 +12,6 @@ public class Deadline extends Task {
     public Deadline(String name, String date) {
         super(name);
         this.deadline = LocalDate.parse(date);
-
     }
 
     @Override

@@ -34,15 +34,15 @@ public class TaskList {
     /**
      * Marks a Task from TaskList given its position
      */
-    public void markTask(int i) {
-       this.taskList.get(i - 1).complete();
+    public void markTask(int index) {
+       this.taskList.get(index - 1).complete();
     }
 
     /**
      * Unmarks a Task from TaskList given its position
      */
-    public void unmarkTask(int i) {
-        this.taskList.get(i - 1).uncomplete();
+    public void unmarkTask(int index) {
+        this.taskList.get(index - 1).uncomplete();
     }
 
     /**

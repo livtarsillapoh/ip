@@ -6,8 +6,8 @@ package tarawrr;
 public class UnmarkCommand extends Command {
     private int index;
 
-    public UnmarkCommand(int i) {
-        this.index = i;
+    public UnmarkCommand(int index) {
+        this.index = index;
     }
 
     @Override

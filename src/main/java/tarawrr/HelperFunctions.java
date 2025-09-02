@@ -30,15 +30,15 @@ public class HelperFunctions {
      * @throws IOException
      */
     private static void writeToFile(String filePath, String textToAdd) throws IOException {
-        File f = new File(filePath);
-        File parent = f.getParentFile();
+        File file = new File(filePath);
+        File parent = file.getParentFile();
         if (parent != null && !parent.exists()) {
             parent.mkdirs();
         }
-        if (!f.exists()) {
-            f.createNewFile();
+        if (!file.exists()) {
+            file.createNewFile();
         }
-        FileWriter fw = new FileWriter(f, true); // append mode
+        FileWriter fw = new FileWriter(file, true); // append mode
         fw.write(textToAdd);
         fw.close();
     }
@@ -46,11 +46,11 @@ public class HelperFunctions {
     /**
      * Writes a task into a file
      * @param filePath
-     * @param t
+     * @param task
      */
-    private static void addToData(String filePath, Task t) {
+    private static void addToData(String filePath, Task task) {
         try {
-            writeToFile(filePath, t.toStorageString() + "\n");
+            writeToFile(filePath, task.toStorageString() + "\n");
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -6,11 +6,6 @@ import java.time.format.DateTimeFormatter;
  ** Parser Class - Responsible for parsing user input commands.
  */
 public class Parser {
-    String type;
-    String description;
-    Boolean isDone;
-    String deadline;
-    String startTime, endTime;
 
     /**
      * Parse user input into its respective command and throws an exception if invalid input is given

@@ -1,4 +1,7 @@
-import tarawrr.*;  //same package as the class being tested
+import tarawrr.Parser;
+import tarawrr.Command;
+import tarawrr.TodoCommand;
+import tarawrr.TarawrrException;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertInstanceOf;
