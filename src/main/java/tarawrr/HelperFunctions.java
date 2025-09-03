@@ -8,8 +8,6 @@ import java.io.IOException;
  */
 public class HelperFunctions {
 
-    public static final String HORIZONTAL_LINE = "____________________________________________________________";
-
     /**
      * Removes the first word and first space or an empty string if no space is found
      * @param string

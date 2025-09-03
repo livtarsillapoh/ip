@@ -17,16 +17,18 @@ public class Tarawrr {
         this.tasks = this.storage.load();
     }
 
+    public Ui getUi() {
+        return this.ui;
+    }
+
     public void run() throws TarawrrException {
         Scanner scanner = new Scanner(System.in);
-        ui.showWelcomeMessage();
 
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
             if (input.equals("bye")) {
                 break;
             }
-
             try {
                 Command command = Parser.parseTask(input);
                 command.execute(tasks, ui, storage);
@@ -37,6 +39,21 @@ public class Tarawrr {
 
         ui.showExitMessage(); // Show farewell message when "bye" is typed
         scanner.close();
+    }
+
+    /**
+     * Generates a response for the user's chat message.
+     */
+    public String getResponse(String input) {
+        if (input.equals("bye")) {
+            return ui.showExitMessage();
+        }
+        try {
+            Command command = Parser.parseTask(input);
+            return command.execute(tasks, ui, storage);
+        } catch (TarawrrException e) {
+            return ui.showError(e.toString());
+        }
     }
 
 

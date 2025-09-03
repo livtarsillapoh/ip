@@ -1,6 +1,5 @@
 package tarawrr;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class FindCommand extends Command {
@@ -11,7 +10,7 @@ public class FindCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
         ArrayList<Task> taskList = tasks.getTasks();
         TaskList list = new TaskList();
         for (Task t : taskList) {
@@ -20,6 +19,6 @@ public class FindCommand extends Command {
                 list.addToTaskList(t);
             }
         }
-        ui.showFindTask(list);
+        return ui.showFindTask(list);
     }
 }

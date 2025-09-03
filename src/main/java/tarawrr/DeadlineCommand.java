@@ -14,7 +14,7 @@ public class DeadlineCommand extends Command{
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
         Deadline deadline = new Deadline(description, date);
         tasks.addToTaskList(deadline);
         try {
@@ -22,6 +22,6 @@ public class DeadlineCommand extends Command{
         } catch (TarawrrException e) {
             throw new RuntimeException(e);
         }
-        ui.showTaskAddedMessage(deadline, tasks.numberOfTasks());
+       return ui.showTaskAddedMessage(deadline, tasks.numberOfTasks());
     }
 }

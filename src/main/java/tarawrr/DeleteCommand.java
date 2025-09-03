@@ -12,7 +12,7 @@ public class DeleteCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Task task = tasks.getTasks().get(this.index - 1);
         tasks.removeFromTaskList(this.index);
         try {
@@ -20,6 +20,6 @@ public class DeleteCommand extends Command {
         } catch (TarawrrException e) {
             throw new RuntimeException(e);
         }
-        ui.showDeletedTask(task, tasks.numberOfTasks());
+        return ui.showDeletedTask(task, tasks.numberOfTasks());
     }
 }

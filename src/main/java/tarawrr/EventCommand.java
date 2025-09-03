@@ -16,10 +16,10 @@ public class EventCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
         Event event = new Event(description, start, end);
         tasks.addToTaskList(event);
         storage.save(tasks);
-        ui.showTaskAddedMessage(event, tasks.numberOfTasks());
+        return ui.showTaskAddedMessage(event, tasks.numberOfTasks());
     }
 }

@@ -12,13 +12,13 @@ public class MarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
         tasks.markTask(this.index);
         try {
             storage.save(tasks);
         } catch (TarawrrException e) {
             throw new RuntimeException(e);
         }
-        ui.showMarkedTask(tasks.getTasks().get(this.index - 1));
+        return ui.showMarkedTask(tasks.getTasks().get(this.index - 1));
     }
 }

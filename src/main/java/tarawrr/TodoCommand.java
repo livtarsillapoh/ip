@@ -12,7 +12,7 @@ public class TodoCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
         ToDos todo = new ToDos(this.description);
         tasks.addToTaskList(todo);
         try {
@@ -20,7 +20,7 @@ public class TodoCommand extends Command {
         } catch (TarawrrException e) {
             throw new RuntimeException(e);
         }
-        ui.showTaskAddedMessage(todo, tasks.numberOfTasks());
+        return ui.showTaskAddedMessage(todo, tasks.numberOfTasks());
     }
 
 }

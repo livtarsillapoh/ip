@@ -11,14 +11,13 @@ public class UnmarkCommand extends Command {
     }
 
     @Override
-    public void execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
         tasks.unmarkTask(this.index);
         try {
             storage.save(tasks);
         } catch (TarawrrException e) {
             throw new RuntimeException(e);
         }
-        ui.showUnmarkedTask(tasks.getTasks().get(this.index - 1));
-
+        return ui.showUnmarkedTask(tasks.getTasks().get(this.index - 1));
     }
 }
