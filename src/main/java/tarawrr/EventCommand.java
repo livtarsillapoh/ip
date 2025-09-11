@@ -13,6 +13,9 @@ public class EventCommand extends Command {
         this.description = description;
         this.start = start;
         this.end = end;
+        assert end != null : "end of Event task should not be null";
+        assert start != null : "start of Event task should not be null";
+        assert description != null : "description of Event task should not be null";
     }
 
     @Override

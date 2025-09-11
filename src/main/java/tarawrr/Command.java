@@ -7,7 +7,7 @@ public abstract class Command {
     /**
      * Executes the command. May mutate tasks, should print via Ui and store to datafile.
      *
-     * @return
+     * @return Strinfg to be printed to user.
      */
     public abstract String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException;
 

@@ -7,6 +7,7 @@ public class FindCommand extends Command {
 
     public FindCommand(String keyword) {
         this.keyword = keyword;
+        assert keyword != null : "keyword to find should not be null";
     }
 
     @Override

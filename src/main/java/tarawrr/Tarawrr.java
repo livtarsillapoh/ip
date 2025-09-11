@@ -22,7 +22,14 @@ public class Tarawrr {
     }
 
     public void run() throws TarawrrException {
+
+        assert tasks != null: "Tasklist should not be null";;
+        assert ui != null: "Ui returned should not be null";;
+        assert storage != null: "Storage returned should not be null";;
+
+        System.out.println(ui.showWelcomeMessage());
         Scanner scanner = new Scanner(System.in);
+        assert scanner != null : "Scanner should not be null";
 
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
@@ -31,13 +38,13 @@ public class Tarawrr {
             }
             try {
                 Command command = Parser.parseTask(input);
-                command.execute(tasks, ui, storage);
+                System.out.println(command.execute(tasks, ui, storage));
             } catch (TarawrrException e) {
-                ui.showError(e.toString());
+                System.out.println(ui.showError(e.toString()));
             }
         }
 
-        ui.showExitMessage(); // Show farewell message when "bye" is typed
+        System.out.println(ui.showExitMessage());
         scanner.close();
     }
 
@@ -48,8 +55,10 @@ public class Tarawrr {
         if (input.equals("bye")) {
             return ui.showExitMessage();
         }
+
         try {
             Command command = Parser.parseTask(input);
+            assert command != null : "Command returned should not be null after parsing";
             return command.execute(tasks, ui, storage);
         } catch (TarawrrException e) {
             return ui.showError(e.toString());

@@ -9,6 +9,7 @@ public class MarkCommand extends Command {
     //Constructor initiates an instance of MarkCommand with index to be marked
     public MarkCommand(int index) {
         this.index = index;
+        assert index > 0 : "index of task to be marked should be greater than 0";
     }
 
     @Override

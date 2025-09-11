@@ -49,7 +49,7 @@ public class Storage {
             boolean done = parts[1].trim().equals("1");
             switch (parts[0].trim()) {
                 case "T":
-                    ToDos todo = new ToDos(parts[2]);
+                    Todo todo = new Todo(parts[2]);
                     if (done) {
                         todo.complete();
                     }

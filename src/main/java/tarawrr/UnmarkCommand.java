@@ -8,6 +8,7 @@ public class UnmarkCommand extends Command {
 
     public UnmarkCommand(int index) {
         this.index = index;
+        assert index > 0 : "index of task to be unmarked should be greater than 0";
     }
 
     @Override
