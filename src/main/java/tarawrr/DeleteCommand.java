@@ -19,7 +19,7 @@ public class DeleteCommand extends Command {
         try {
             storage.save(tasks);
         } catch (TarawrrException e) {
-            throw new RuntimeException(e);
+            ui.showError(e.getMessage());
         }
         return ui.showDeletedTask(task, tasks.numberOfTasks());
     }

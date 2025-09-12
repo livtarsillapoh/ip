@@ -11,18 +11,19 @@ public class DeadlineCommand extends Command{
     public DeadlineCommand(String description, String date) {
         this.description = description;
         assert description != null : "description of Deadline task should not be null";
+
         this.date = date;
         assert date != null : "deadline of Deadline task should not be null";
     }
 
     @Override
-    public String execute(TaskList tasks, Ui ui, Storage storage) throws TarawrrException {
+    public String execute(TaskList tasks, Ui ui, Storage storage) {
         Deadline deadline = new Deadline(description, date);
         tasks.addToTaskList(deadline);
         try {
             storage.save(tasks);
         } catch (TarawrrException e) {
-            throw new RuntimeException(e);
+            ui.showError(e.getMessage());
         }
        return ui.showTaskAddedMessage(deadline, tasks.numberOfTasks());
     }

@@ -7,9 +7,9 @@ import java.util.Scanner;
  */
 public class Tarawrr {
 
-    private Storage storage;
+    private final Storage storage;
     private TaskList tasks;
-    private Ui ui;
+    private final Ui ui;
 
     public Tarawrr(String filePath) throws IOException {
         this.ui = new Ui();
@@ -21,15 +21,14 @@ public class Tarawrr {
         return this.ui;
     }
 
-    public void run() throws TarawrrException {
+    public void run() {
 
-        assert tasks != null: "Tasklist should not be null";;
-        assert ui != null: "Ui returned should not be null";;
-        assert storage != null: "Storage returned should not be null";;
+        assert tasks != null: "Tasklist should not be null";
+        assert ui != null: "Ui returned should not be null";
+        assert storage != null: "Storage returned should not be null";
 
         System.out.println(ui.showWelcomeMessage());
         Scanner scanner = new Scanner(System.in);
-        assert scanner != null : "Scanner should not be null";
 
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
@@ -66,7 +65,7 @@ public class Tarawrr {
     }
 
 
-    public static void main(String[] args) throws IOException, TarawrrException {
+    public static void main(String[] args) throws IOException {
         new Tarawrr("data/dataFile.txt").run();
     }
 }

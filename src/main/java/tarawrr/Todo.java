@@ -4,7 +4,6 @@ package tarawrr;
  * Todo Class - Represents a Task with a description
  */
 public class Todo extends Task {
-    // no new fields
 
     public Todo(String name) {
         super(name);

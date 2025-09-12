@@ -9,8 +9,7 @@ public class Ui {
     public String showWelcomeMessage() {
         return HORIZONTAL_LINE +
                 "\n" +
-                "Hello! I'm TARAWRR " +
-                "What can I do for you?" +
+                "Hello! I'm TARAWRR, what can I do for you?" +
                 "\n" +
                 HORIZONTAL_LINE;
     }
