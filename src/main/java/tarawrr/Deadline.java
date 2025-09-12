@@ -28,4 +28,7 @@ public class Deadline extends Task {
         return String.format("D | %d | %s | %s", super.isDone() ? 1 : 0, super.getDescription(), date);
     }
 
+    public Deadline changeDeadline(String newDate) {
+        return new Deadline(this.getDescription(), newDate);
+    }
 }
