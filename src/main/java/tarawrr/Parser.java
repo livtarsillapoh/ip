@@ -3,16 +3,10 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 /**
- ** Parser Class - Responsible for parsing user input commands.
+ ** Responsible for parsing user input commands.
  */
 public class Parser {
-
-    /**
-     * Parse user input into its respective command and throws an exception if invalid input is given
-     * @param input
-     * @return
-     * @throws TarawrrException
-     */
+    //Parse user input into its respective command and throws an exception if invalid input is given
     public static Command parseTask(String input) throws TarawrrException {
         String taskType = input.split(" ")[0].toLowerCase().trim();
 

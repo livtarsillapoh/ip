@@ -1,3 +1,8 @@
+T | 1 | hw
 T | 0 | hw
 T | 0 | hw
+T | 0 | homework
+T | 0 | hw
+T | 0 | hw
+T | 0 | jov
 T | 0 | hw

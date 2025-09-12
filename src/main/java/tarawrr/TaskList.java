@@ -65,8 +65,8 @@ public class TaskList {
     @Override
     public String toString() {
         String logbookString = "";
-        for (int i = 0; i < this.numberOfTasks(); i++) {
-            logbookString += Integer.toString(i + 1) + ". " + this.taskList.get(i).toString() + "\n";
+        for (int i = 1; i < this.numberOfTasks(); i++) {
+            logbookString += i + ". " + this.taskList.get(i - 1).toString() + "\n";
         }
         return logbookString;
     }

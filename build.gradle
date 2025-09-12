@@ -5,6 +5,12 @@ plugins {
     id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(17)
+    }
+}
+
 repositories {
     mavenCentral()
 }
@@ -12,26 +18,21 @@ repositories {
 dependencies {
     testImplementation group: 'org.junit.jupiter', name: 'junit-jupiter-api', version: '5.10.0'
     testRuntimeOnly group: 'org.junit.jupiter', name: 'junit-jupiter-engine', version: '5.10.0'
-    String javaFxVersion = '17.0.7'
-    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'win'
-    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'mac'
-    implementation group: 'org.openjfx', name: 'javafx-base', version: javaFxVersion, classifier: 'linux'
-    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'win'
-    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'mac'
-    implementation group: 'org.openjfx', name: 'javafx-controls', version: javaFxVersion, classifier: 'linux'
-    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'win'
-    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'mac'
-    implementation group: 'org.openjfx', name: 'javafx-fxml', version: javaFxVersion, classifier: 'linux'
-    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'win'
-    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'mac'
-    implementation group: 'org.openjfx', name: 'javafx-graphics', version: javaFxVersion, classifier: 'linux'
+    String javaFxVersion = '17.0.16'
+    implementation 'org.openjfx:javafx-controls:17.0.7'
+    implementation 'org.openjfx:javafx-fxml:17.0.7'
+    implementation "org.openjfx:javafx-base:$javaFxVersion:mac"
+    implementation "org.openjfx:javafx-controls:$javaFxVersion:mac"
+    implementation "org.openjfx:javafx-fxml:$javaFxVersion:mac"
+    implementation "org.openjfx:javafx-graphics:$javaFxVersion:mac"
+
 }
 
 jar {
     archiveBaseName = 'tarawrr'
     manifest {
-        attributes (
-                'Main-Class': 'tarawrr.Tarawrr'
+        attributes(
+                'Main-Class': 'Main'
         )
     }
 }
@@ -51,15 +52,39 @@ test {
 }
 
 application {
-    mainClass.set("tarawrr.Tarawrr")
-    mainClass.set("Launcher")
+    mainClass.set("Main")
 }
 
 shadowJar {
     archiveBaseName = "tarawrr"
     archiveClassifier = null
+    configurations = [project.configurations.runtimeClasspath]
+    mergeServiceFiles()
 }
 
 run {
-    standardInput = System.in
+    jvmArgs = [
+            '--module-path', '/Users/tara/Downloads/javafx-sdk-17.0.16/lib',
+            '--add-modules', 'javafx.controls,javafx.fxml,javafx.graphics'
+    ]
 }
+
+
+task fatJar(type: Jar) {
+    archiveBaseName = 'tarawrr'
+    archiveVersion = '1.0'
+    from sourceSets.main.output
+    dependsOn configurations.runtimeClasspath
+    from { configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
+
+    // Handle duplicate entries
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE  // You can choose to EXCLUDE or WARN
+
+    manifest {
+        attributes(
+                'Main-Class': 'Main'
+        )
+    }
+}
+
+

@@ -7,9 +7,9 @@ import java.util.Scanner;
  */
 public class Tarawrr {
 
-    private Storage storage;
+    private final Storage storage;
     private TaskList tasks;
-    private Ui ui;
+    private final Ui ui;
 
     public Tarawrr(String filePath) throws IOException {
         this.ui = new Ui();
@@ -21,7 +21,13 @@ public class Tarawrr {
         return this.ui;
     }
 
-    public void run() throws TarawrrException {
+    public void run() {
+
+        assert tasks != null: "Tasklist should not be null";
+        assert ui != null: "Ui returned should not be null";
+        assert storage != null: "Storage returned should not be null";
+
+        System.out.println(ui.showWelcomeMessage());
         Scanner scanner = new Scanner(System.in);
 
         while (scanner.hasNextLine()) {
@@ -31,13 +37,13 @@ public class Tarawrr {
             }
             try {
                 Command command = Parser.parseTask(input);
-                command.execute(tasks, ui, storage);
+                System.out.println(command.execute(tasks, ui, storage));
             } catch (TarawrrException e) {
-                ui.showError(e.toString());
+                System.out.println(ui.showError(e.toString()));
             }
         }
 
-        ui.showExitMessage(); // Show farewell message when "bye" is typed
+        System.out.println(ui.showExitMessage());
         scanner.close();
     }
 
@@ -48,8 +54,10 @@ public class Tarawrr {
         if (input.equals("bye")) {
             return ui.showExitMessage();
         }
+
         try {
             Command command = Parser.parseTask(input);
+            assert command != null : "Command returned should not be null after parsing";
             return command.execute(tasks, ui, storage);
         } catch (TarawrrException e) {
             return ui.showError(e.toString());
@@ -57,7 +65,7 @@ public class Tarawrr {
     }
 
 
-    public static void main(String[] args) throws IOException, TarawrrException {
+    public static void main(String[] args) throws IOException {
         new Tarawrr("data/dataFile.txt").run();
     }
 }

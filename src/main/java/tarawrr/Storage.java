@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- *  * Storage Class saves and loads data to/from storage hard drive
+ ** Storage Class saves and loads data to/from storage hard drive
  */
 public class Storage {
     private final Path path;
@@ -22,11 +22,7 @@ public class Storage {
         this.path = Paths.get(filePath);
     }
 
-    /**
-     * Load data from the hard drive into TaskList
-     * @return
-     * @throws IOException
-     */
+    //Load data from the hard drive into TaskList
     public TaskList load() throws IOException {
         TaskList tasks = new TaskList();
 
@@ -49,7 +45,7 @@ public class Storage {
             boolean done = parts[1].trim().equals("1");
             switch (parts[0].trim()) {
                 case "T":
-                    ToDos todo = new ToDos(parts[2]);
+                    Todo todo = new Todo(parts[2]);
                     if (done) {
                         todo.complete();
                     }
@@ -81,15 +77,10 @@ public class Storage {
                     System.out.println("Unknown task type: " + parts[0]);
             }
         }
-
         return tasks;
     }
 
-    /**
-     * Saves data from TaskList to the hard drive
-     * @param tasks
-     * @throws TarawrrException
-     */
+    //Saves data from TaskList to the hard drive
     public void save(TaskList tasks) throws TarawrrException {
         try {
             FileWriter writer = new FileWriter(path.toFile());

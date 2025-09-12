@@ -9,6 +9,7 @@ public class DeleteCommand extends Command {
     //Constructor initiates an instance of DeleteCommand with index to be deleted
     public DeleteCommand(int i) {
         this.index = i;
+        assert i > 0 : "index of task to be deleted should be greater than 0";
     }
 
     @Override
@@ -18,7 +19,7 @@ public class DeleteCommand extends Command {
         try {
             storage.save(tasks);
         } catch (TarawrrException e) {
-            throw new RuntimeException(e);
+            ui.showError(e.getMessage());
         }
         return ui.showDeletedTask(task, tasks.numberOfTasks());
     }

@@ -1,12 +1,11 @@
 package tarawrr;
 
 /**
- * ToDos Class - Represents a Task with a description
+ * Todo Class - Represents a Task with a description
  */
-public class ToDos extends Task {
-    // no new fields
+public class Todo extends Task {
 
-    public ToDos(String name) {
+    public Todo(String name) {
         super(name);
     }
 

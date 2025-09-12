@@ -1,7 +1,7 @@
 import tarawrr.Storage;
 import tarawrr.TarawrrException;
 import tarawrr.TaskList;
-import tarawrr.ToDos;
+import tarawrr.Todo;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.io.TempDir;
 import java.nio.file.Path;
@@ -35,7 +35,7 @@ public class StorageTest {
         TaskList tasks = new TaskList();
 
         // Add a task to the list
-        tasks.addToTaskList(new ToDos("do homework"));
+        tasks.addToTaskList(new Todo("do homework"));
 
         // Save tasks to the file
         storage.save(tasks);
