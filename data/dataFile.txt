@@ -1,8 +1,5 @@
-T | 1 | hw
-T | 0 | hw
-T | 0 | hw
-T | 0 | homework
-T | 0 | hw
-T | 0 | hw
-T | 0 | jov
-T | 0 | hw
+T | 0 | dishes
+D | 0 | homework | Jan 01 2025
+E | 0 | wedding | Nov 12 2024 to Nov 13 2024
+T | 0 | mom's dishes
+T | 0 | assignment

@@ -37,4 +37,8 @@ public class Event extends Task {
                 startDate + " to " + endDate);
     }
 
+    public Event changeDate(String startDate, String endDate) {
+        return new Event(this.getDescription(), startDate, endDate);
+    }
+
 }
