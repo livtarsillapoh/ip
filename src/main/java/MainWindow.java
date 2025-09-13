@@ -27,11 +27,7 @@ public class MainWindow extends AnchorPane {
 
     @FXML
     public void initialize() {
-        dialogContainer.heightProperty().addListener((observable) -> {
-            scrollPane.setVvalue(1.0);
-        });
-        userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-        userInput.clear();
+        scrollPane.vvalueProperty().bind(dialogContainer.heightProperty());
     }
 
     public void showWelcome() {

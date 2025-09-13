@@ -15,6 +15,7 @@ public abstract class Task {
     public void complete() {
         this.status = true;
     }
+
     public void uncomplete() {
         this.status = false;
     }
@@ -27,7 +28,7 @@ public abstract class Task {
         return name;
     }
 
-    // Gets the String representation of a task to be stored in storage
+    // Get the String representation of a task to be stored in storage
     public abstract String toStorageString();
 
     @Override

@@ -6,8 +6,8 @@ import java.time.format.DateTimeFormatter;
  * Event Class - Represents a Task with a description and start time and end time
  */
 public class Event extends Task {
-    private final LocalDate start;
-    private final LocalDate end;
+    private LocalDate start;
+    private LocalDate end;
 
     //Constructor initiates an instance of Event with name, start time, and end time
     public Event(String name, String start, String end) {
