@@ -53,23 +53,28 @@ public class TaskList {
         counter++;
     }
 
-    /**
-     * Removes a Task from TaskList given its position
-     */
+    //Removes a Task from TaskList given its positio
     public void removeFromTaskList(int taskNumber) {
         int taskIndex = taskNumber - 1;
         this.taskList.remove(taskIndex);
         counter--;
     }
 
+    // Empty the task list
+    public void clear() {
+        this.taskList.clear();
+        this.counter = 0;
+    }
+
     @Override
     public String toString() {
         String logbookString = "";
-        for (int i = 0; i < this.numberOfTasks(); i++) {
-            logbookString += Integer.toString(i + 1) + ". " + this.taskList.get(i).toString() + "\n";
+        for (int i = 1; i <= this.numberOfTasks(); i++) {
+            logbookString += i + ". " + this.taskList.get(i - 1).toString() + "\n";
         }
         return logbookString;
     }
+
 }
 
 
