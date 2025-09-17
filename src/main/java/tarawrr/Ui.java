@@ -4,65 +4,67 @@ package tarawrr;
  * Ui class deals with interactions with the user
  */
 public class Ui {
-    public static final String HORIZONTAL_LINE = "____________________________________________________________";
 
     public String showWelcomeMessage() {
-        return HORIZONTAL_LINE +
-                "Hello! I'm TARAWRR" +
-                "What can I do for you?" +
-                HORIZONTAL_LINE;
+        return "Hello! I'm TARAWRR! " +
+                "What can I do for you?";
     }
 
     public String showTaskAddedMessage(Task task, int taskCount) {
-        return HORIZONTAL_LINE +
-                String.format("Got it. I've added and logged this task:\n\t%s", task.toString()) + "\n" +
-                String.format("Now you have %s tasks in the list.", taskCount) + "\n" +
-                HORIZONTAL_LINE;
+        return String.format("Got it. I've added and logged this task:\n\t%s", task.toString()) + "\n" +
+                String.format("Now you have %s tasks in the list.", taskCount);
     }
 
     public String showMarkedTask(Task task) {
-        return HORIZONTAL_LINE +
-                String.format("Nice! I have marked this task as done:\n %s", task.toString()) + "\n" +
-                HORIZONTAL_LINE;
+        return String.format("Nice! I have marked this task as done:\n %s", task.toString());
     }
 
     public String showUnmarkedTask(Task task) {
-        return HORIZONTAL_LINE +
-                String.format("OK! I have marked this task as not done yet:\n %s", task.toString()) + "\n" +
-                HORIZONTAL_LINE;
+        return String.format("OK! I have marked this task as not done yet:\n %s", task.toString());
     }
 
     public String showDeletedTask(Task task, int taskCount) {
-        return HORIZONTAL_LINE +
-                String.format("Got it. I've removed this task:\n\t%s", task.toString()) + "\n" +
-                String.format("Now you have %s tasks in the list.", taskCount) + "\n" +
-                HORIZONTAL_LINE;
+        return String.format("Got it. I've removed this task:\n\t%s", task.toString()) + "\n" +
+                String.format("Now you have %s tasks in the list.", taskCount);
     }
 
     public String showTaskList(TaskList tasks) {
-        return HORIZONTAL_LINE +
-                String.format("Here are the tasks in your list:\n\t%s", tasks.toString()) + "\n" +
-                HORIZONTAL_LINE;
+        return String.format("Here are the tasks in your list:\n%s", tasks.toString());
     }
 
     public String showFindTask(TaskList tasks) {
-        return HORIZONTAL_LINE +
-                String.format("Here are the matching tasks in your list:\n%s", tasks.toString()) + "\n" +
-                HORIZONTAL_LINE;
+        return String.format("Here are the matching tasks in your list:\n%s", tasks.toString());
     }
 
     public String showError(String errorMessage) {
-        return HORIZONTAL_LINE +
-                errorMessage + "\n" +
-                HORIZONTAL_LINE;
+        return errorMessage;
     }
 
     public String showExitMessage() {
-        return HORIZONTAL_LINE +
-                "Bye. Hope to see you again soon!" + "\n" +
-                HORIZONTAL_LINE;
+        return "Bye. Hope to see you again soon!";
     }
 
+    public String showHelp() {
+        return "Here are the available commands:\n" +
+                "1. todo <description> - Adds a todo task\n" +
+                "2. deadline <description> /by <date> - Adds a deadline task\n" +
+                "3. event <description> /from <start date> /to <end date> - Adds an event task\n" +
+                "4. list - Lists all tasks\n" +
+                "5. mark <task number> - Marks a task as done\n" +
+                "6. unmark <task number> - Marks a task as not done\n" +
+                "7. delete <task number> - Deletes a task\n" +
+                "8. find <keyword> - Finds tasks containing the keyword\n" +
+                "9. help - Shows this help message\n" +
+                "10. bye - Exits the application\n";
+    }
+
+    public String showClearMessage() {
+        return "All tasks have been cleared!";
+    }
+
+    public String showSnoozeMessage(Task newTask) {
+        return String.format("Got it. I've snoozed the task to:\n\t%s", newTask.toString());
+    }
 }
 
 
