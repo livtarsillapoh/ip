@@ -3,3 +3,4 @@ D | 0 | homework | Jan 01 2025
 E | 0 | wedding | Nov 12 2024 to Nov 13 2024
 T | 0 | mom's dishes
 T | 0 | assignment
+T | 0 | ip

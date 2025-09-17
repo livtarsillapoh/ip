@@ -23,7 +23,7 @@ public class MainWindow extends AnchorPane {
     private Tarawrr tarawrr;
 
     private Image userImage = new Image(this.getClass().getResourceAsStream("/images/DaUser.png"));
-    private Image dukeImage = new Image(this.getClass().getResourceAsStream("/images/DaDuke.png"));
+    private Image tarawrrImage = new Image(this.getClass().getResourceAsStream("/images/DaTarawrr.png"));
 
     @FXML
     public void initialize() {
@@ -37,7 +37,7 @@ public class MainWindow extends AnchorPane {
     public void showWelcome() {
         String welcome = tarawrr.getUi().showWelcomeMessage();
         dialogContainer.getChildren().add(
-                DialogBox.getDukeDialog(welcome, dukeImage)
+                DialogBox.getTarawrrDialog(welcome, tarawrrImage)
         );
     }
 
@@ -57,7 +57,7 @@ public class MainWindow extends AnchorPane {
         String response = tarawrr.getResponse(input);
         dialogContainer.getChildren().addAll(
                 DialogBox.getUserDialog(input, userImage),
-                DialogBox.getDukeDialog(response, dukeImage)
+                DialogBox.getTarawrrDialog(response, tarawrrImage)
         );
         userInput.clear();
     }
