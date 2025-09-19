@@ -1,4 +1,4 @@
-💕  Tarawrr User Guide 💕
+# 💕  Tarawrr User Guide 💕
 
 Hello! I am ✨Tarawrr✨, your task management assistant.
 My purpose is to help you organize, track, and complete your tasks efficiently.

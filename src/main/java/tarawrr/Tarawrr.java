@@ -23,6 +23,7 @@ public class Tarawrr {
 
     public void run() throws TarawrrException {
         Scanner scanner = new Scanner(System.in);
+        System.out.println(ui.showWelcomeMessage());
 
         while (scanner.hasNextLine()) {
             String input = scanner.nextLine();
@@ -31,13 +32,13 @@ public class Tarawrr {
             }
             try {
                 Command command = Parser.parseTask(input);
-                command.execute(tasks, ui, storage);
+                System.out.println(command.execute(tasks, ui, storage));
             } catch (TarawrrException e) {
-                ui.showError(e.toString());
+                System.out.println(ui.showError(e.toString()));
             }
         }
 
-        ui.showExitMessage(); // Show farewell message when "bye" is typed
+        System.out.println(ui.showExitMessage()); // Show farewell message when "bye" is typed
         scanner.close();
     }
 
